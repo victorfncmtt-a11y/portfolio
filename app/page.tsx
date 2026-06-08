@@ -1,10 +1,13 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import CanvasLoader from "./components/common/CanvasLoader";
 import ScrollWrapper from "./components/common/ScrollWrapper";
-import Experience from "./components/experience";
-import Footer from "./components/footer";
 import Hero from "./components/hero";
+
+// Dynamically load heavy 3D sub-sections below the fold
+const Experience = dynamic(() => import("./components/experience"), { ssr: false });
+const Footer = dynamic(() => import("./components/footer"), { ssr: false });
 
 const Home = () => {
   return (

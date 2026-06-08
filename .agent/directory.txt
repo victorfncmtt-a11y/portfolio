@@ -1,0 +1,8 @@
+my-project-workspace/
+├── .agent/
+│   ├── AGENTS.md
+│   └── skills/
+│       └── brand-architect/
+│           ├── SKILL.md
+│           └── scripts/
+│               └── export_artifact.py

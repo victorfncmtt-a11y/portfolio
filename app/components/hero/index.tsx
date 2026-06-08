@@ -10,10 +10,13 @@ import CloudContainer from "../models/Cloud";
 import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
 import TextWindow from "./TextWindow";
+import { useLanguageStore } from "@stores";
+import { TRANSLATIONS } from "@constants";
 
 const Hero = () => {
   const titleRef = useRef<THREE.Mesh>(null);
   const { progress } = useProgress();
+  const language = useLanguageStore((state) => state.language);
 
   useEffect(() => {
     if (progress === 100 && titleRef.current) {
@@ -35,7 +38,7 @@ const Hero = () => {
 
   return (
     <>
-      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>Hi, I am Mohit Virli.</Text>
+      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>{TRANSLATIONS[language].hero.greeting}</Text>
       <StarsContainer />
       <CloudContainer/>
       <group position={[0, -25, 5.69]}>

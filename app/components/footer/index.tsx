@@ -4,7 +4,8 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
-import { FOOTER_LINKS } from "../../constants";
+import { useLanguageStore } from "@stores";
+import { TRANSLATIONS } from "../../constants";
 import { FooterLink } from "../../types";
 
 const FooterLinkItem = ({ link }: { link: FooterLink }) => {
@@ -47,7 +48,14 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
       hoverDiv.style.pointerEvents = 'none';
       document.body.appendChild(hoverDiv);
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    const hoverDiv = document.getElementById(`footer-link-${link.name}`);
+    if (hoverDiv) {
+      hoverDiv.textContent = link.hoverText ?? link.name.toUpperCase();
+    }
+  }, [link.hoverText]);
 
   useEffect(() => {
     if (isMobile) return
@@ -87,6 +95,8 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
 const Footer = () => {
   const groupRef = useRef<THREE.Group>(null);
   const data = useScroll();
+  const language = useLanguageStore((state) => state.language);
+  const footerLinks = TRANSLATIONS[language].footerLinks;
 
   useFrame(() => {
     const d = data.range(0.8, 0.2);
@@ -96,7 +106,7 @@ const Footer = () => {
   });
 
   const getLinks = () => {
-    return FOOTER_LINKS.map((link, i) => {
+    return footerLinks.map((link, i) => {
       return (
         <group key={i} position={[i * (isMobile ? 1.1 : 2), 0, 0]}>
           <FooterLinkItem link={link}/>

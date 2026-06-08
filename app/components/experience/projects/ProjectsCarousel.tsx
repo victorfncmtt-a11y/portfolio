@@ -2,12 +2,14 @@ import { useMemo, useState } from "react";
 import { isMobile } from "react-device-detect";
 import ProjectTile from "./ProjectTile";
 
-import { PROJECTS } from "@constants";
-import { usePortalStore } from "@stores";
+import { useLanguageStore, usePortalStore } from "@stores";
+import { TRANSLATIONS } from "@constants";
 
 const ProjectsCarousel = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const isActive = usePortalStore((state) => state.activePortalId === "projects");
+  const language = useLanguageStore((state) => state.language);
+  const projects = TRANSLATIONS[language].projects;
   const activeId = isActive ? selectedId : null;
 
   const onClick = (id: number) => {
@@ -18,9 +20,9 @@ const ProjectsCarousel = () => {
     const fov = Math.PI;
     const distance = 10;
 
-    const columns = Math.ceil(PROJECTS.length / 2);
+    const columns = Math.ceil(projects.length / 2);
 
-    return PROJECTS.map((project, i) => {
+    return projects.map((project, i) => {
       const row = i % 2; // 0 or 1
       const column = Math.floor(i / 2);
 

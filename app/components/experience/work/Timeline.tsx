@@ -6,7 +6,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 
-import { WORK_TIMELINE } from "@constants";
+import { useLanguageStore } from "@stores";
+import { TRANSLATIONS } from "@constants";
 import { WorkTimelinePoint } from "@types";
 
 const reusableLeft = new THREE.Vector3(-0.3, 0, -0.1);
@@ -52,7 +53,7 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
             <Text {...titleProps} fontSize={0.6} maxWidth={3} position={[0, -diff / 2, 0]}>
               {point.title}
             </Text>
-            <Text {...textProps} fontSize={0.2} position={[0, -0.4 - diff, 0]}>
+            <Text {...textProps} fontSize={0.2} maxWidth={3} position={[0, -0.4 - diff, 0]}>
               {point.subtitle}
             </Text>
           </group>
@@ -65,7 +66,8 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
 const Timeline = ({ progress }: { progress: number }) => {
   const { camera } = useThree();
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
-  const timeline = useMemo(() => WORK_TIMELINE, []);
+  const language = useLanguageStore((state) => state.language);
+  const timeline = useMemo(() => TRANSLATIONS[language].workTimeline, [language]);
 
   const curve = useMemo(() => new THREE.CatmullRomCurve3(timeline.map(p => p.point), false), [timeline]);
   const curvePoints = useMemo(() => curve.getPoints(500), [curve]);

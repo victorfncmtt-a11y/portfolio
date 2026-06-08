@@ -1,6 +1,7 @@
 import { Text, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { usePortalStore } from "@stores";
+import { usePortalStore, useLanguageStore } from "@stores";
+import { TRANSLATIONS } from "@constants";
 import { useRef } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from 'three';
@@ -13,6 +14,8 @@ const Experience = () => {
   const groupRef = useRef<THREE.Group>(null);
   const data = useScroll();
   const isActive = usePortalStore((state) => !!state.activePortalId);
+  const language = useLanguageStore((state) => state.language);
+  const t = TRANSLATIONS[language].experience;
 
   const fontProps = {
     font: "./soria-font.ttf",
@@ -40,7 +43,7 @@ const Experience = () => {
   });
 
   const getTitle = () => {
-    const title = 'experience'.toUpperCase();
+    const title = (t.mainTitle || 'experience').toUpperCase();
     return title.split('').map((char, i) => {
       const diff = isMobile ? 0.4 : 0.8;
       return (
@@ -61,14 +64,14 @@ const Experience = () => {
         </group>
 
         <group position={[0, -1, 0]} ref={groupRef}>
-          <GridTile title='WORK AND EDUCATION'
+          <GridTile title={t.workTitle}
             id="work"
             color='#b9c6d6'
             textAlign='left'
             position={new THREE.Vector3(isMobile ? -1 : -2, 0, isMobile ? 0.4 : 0)}>
             <Work/>
           </GridTile>
-          <GridTile title='SIDE PROJECTS'
+          <GridTile title={t.projectsTitle}
             id="projects"
             color='#bdd1e3'
             textAlign='right'
