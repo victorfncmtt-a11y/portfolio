@@ -35,15 +35,20 @@ const Work = () => {
         return;
       }
 
-      const scrollContainers = Array.from(canvasParent.querySelectorAll('*')).filter(el => {
+      const allElements = Array.from(canvasParent.querySelectorAll('*')) as HTMLElement[];
+      const scrollContainers = allElements.filter(el => {
         const style = window.getComputedStyle(el);
-        return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
-      }) as HTMLElement[];
+        return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll');
+      });
 
-      // Sort by scrollHeight descending to identify containers reliably without viewport height dependencies
-      const sorted = [...scrollContainers].sort((a, b) => b.scrollHeight - a.scrollHeight);
-      const mainScroll = sorted[0];
-      const workScroll = sorted[1];
+      const mainScroll = scrollContainers.find(el => {
+        const spacer = el.firstElementChild as HTMLElement;
+        return spacer && spacer.style.height.startsWith('4');
+      });
+      const workScroll = scrollContainers.find(el => {
+        const spacer = el.firstElementChild as HTMLElement;
+        return spacer && spacer.style.height.startsWith('2');
+      });
 
       if (workScroll && mainScroll) {
         if (isActive) {
