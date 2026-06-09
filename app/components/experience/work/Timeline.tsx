@@ -35,7 +35,7 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
     ...textProps,
     font: "./soria-font.ttf",
     fontSize: 0.6,
-    maxWidth: 3,
+    maxWidth: 5,
   }), [textProps]);
 
   return (
@@ -50,7 +50,7 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
             {point.year}
           </Text>
           <group position={[0, -0.5, 0]}>
-            <Text {...titleProps} fontSize={0.6} maxWidth={3} position={[0, -diff / 2, 0]}>
+            <Text {...titleProps} fontSize={0.6} maxWidth={5} position={[0, -diff / 2, 0]}>
               {point.title}
             </Text>
             <Text {...textProps} fontSize={0.2} maxWidth={3} position={[0, -0.4 - diff, 0]}>
