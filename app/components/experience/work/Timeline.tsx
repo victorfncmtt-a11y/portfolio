@@ -28,6 +28,7 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
     font: "./Vercetti-Regular.woff",
     color: "white",
     anchorX: textAlign,
+    textAlign: textAlign,
     fillOpacity: 2 - 2 * diff,
   }), [textAlign, diff]);
 

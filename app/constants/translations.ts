@@ -41,7 +41,7 @@ export interface TranslationSet {
 export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
   en: {
     hero: {
-      greeting: "Hi My name is Victor Maitto",
+      greeting: "Hi! My name is Victor Maitto",
       primaryTitle: "BRAND & CONTENT STRATEGIST",
       secondaryTitle: "BRAND DESIGNER",
       rotatingSides: {
@@ -73,9 +73,9 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
       },
       {
         point: new THREE.Vector3(-3, -1, -6),
-        year: '2022 - 2025',
+        year: '2022 - 2023',
         title: 'Freelancer',
-        subtitle: 'Identity & Content Design',
+        subtitle: 'Identity Design & Art Direction',
         position: 'left',
       },
       {
@@ -190,7 +190,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
   },
   pt: {
     hero: {
-      greeting: "Olá, meu nome é Victor Maitto",
+      greeting: "Olá! Meu nome é Victor Maitto",
       primaryTitle: "ESTRATEGISTA DE MARCA E CONTEÚDO",
       secondaryTitle: "DESIGNER DE MARCA",
       rotatingSides: {
@@ -222,9 +222,9 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
       },
       {
         point: new THREE.Vector3(-3, -1, -6),
-        year: '2022 - 2025',
+        year: '2022 - 2023',
         title: 'Freelancer',
-        subtitle: 'Design de Identidade & Conteúdo',
+        subtitle: 'Design de Identidade e Direção de Arte',
         position: 'left',
       },
       {
@@ -244,7 +244,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
       {
         point: new THREE.Vector3(0, 1, -15),
         year: '2025 - 2026',
-        title: 'Autônomo',
+        title: 'Freelancer',
         subtitle: 'Estratégia de Marca e Conteúdo',
         position: 'left',
       },

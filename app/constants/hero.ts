@@ -3,7 +3,7 @@
  */
 export const HERO_TEXT = {
   // Main greeting text shown on load
-  greeting: "Hi My name is Victor Maitto",
+  greeting: "Hi! My name is Victor Maitto",
 
   // Principal scrolling title (facing front-left in the 3D space)
   primaryTitle: "FRONTEND ENGINEER",
