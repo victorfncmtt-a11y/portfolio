@@ -13,7 +13,13 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const [hovered, setHovered] = useState(false);
   const onPointerOver = () => setHovered(true);
   const onPointerOut = () => setHovered(false);
-  const onClick = () => window.open(link.url, '_blank');
+  const onClick = () => {
+    if (link.name.toUpperCase() === 'CONTACT' || link.name.toUpperCase() === 'CONTATO') {
+      window.dispatchEvent(new CustomEvent('open-contact'));
+    } else {
+      window.open(link.url, '_blank');
+    }
+  };
   const onPointerMove = (e: MouseEvent) => {
     if (isMobile) return;
     const hoverDiv = document.getElementById(`footer-link-${link.name}`);
@@ -115,9 +121,12 @@ const Footer = () => {
     });
   };
 
+  const totalWidth = (footerLinks.length - 1) * (isMobile ? 1.1 : 2);
+  const startX = -totalWidth / 2;
+
   return (
     <group position={[0, -44, 18]} rotation={[-Math.PI / 2, 0, 0]} ref={groupRef}>
-      <group position={[isMobile ? -2.5 : -4, 0, 0]}>
+      <group position={[startX, 0, 0]}>
         { getLinks() }
       </group>
     </group>

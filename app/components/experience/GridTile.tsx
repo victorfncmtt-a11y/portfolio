@@ -3,7 +3,7 @@ import { Edges, MeshPortalMaterial, Text, TextProps, useScroll } from '@react-th
 import { useFrame, useThree } from '@react-three/fiber';
 import { usePortalStore } from '@stores';
 import gsap from "gsap";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 import { TriangleGeometry } from './Triangle';
@@ -29,15 +29,6 @@ const GridTile = (props: GridTileProps) => {
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
   const data = useScroll();
-
-  const [renderChildren, setRenderChildren] = useState(false);
-
-  useEffect(() => {
-    if (isActive) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setRenderChildren(true);
-    }
-  }, [isActive]);
 
   useEffect(() => {
     // Hanlde the hover box and title animation for mobile.
@@ -121,9 +112,6 @@ const GridTile = (props: GridTileProps) => {
     gsap.to(portalRef.current, {
       blend: 0,
       duration: 1,
-      onComplete: () => {
-        setRenderChildren(false);
-      }
     });
 
     // Remove the div from the dom
@@ -210,7 +198,7 @@ const GridTile = (props: GridTileProps) => {
       </group>
       <MeshPortalMaterial ref={portalRef} blend={0} resolution={0} blur={0}>
         <color attach="background" args={[color]} />
-        {renderChildren && children}
+        {children}
       </MeshPortalMaterial>
     </mesh>
   );

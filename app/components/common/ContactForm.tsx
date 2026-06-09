@@ -49,13 +49,21 @@ const ContactForm = () => {
     }
   }, [isOpen]);
 
-  // Handle ESC key to close modal
+  // Handle ESC key to close modal and custom event to open contact form
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsOpen(false);
     };
+    const handleOpenContact = () => {
+      setIsOpen(true);
+      setStatus('idle');
+    };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('open-contact', handleOpenContact);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('open-contact', handleOpenContact);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

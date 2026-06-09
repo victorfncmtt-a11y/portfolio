@@ -154,6 +154,12 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         url: 'https://behance.net/victor-maitto',
       },
       {
+        name: 'Contact',
+        hoverText: 'Get in Touch',
+        icon: '/icons/mail.svg',
+        url: '#',
+      },
+      {
         name: 'Resume',
         hoverText: 'Download PDF',
         icon: '/icons/file.svg',
@@ -289,6 +295,12 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         hoverText: 'Meus projetos no Behance',
         icon: '/icons/behance.svg',
         url: 'https://behance.net/victor-maitto',
+      },
+      {
+        name: 'Contato',
+        hoverText: 'Entre em contato',
+        icon: '/icons/mail.svg',
+        url: '#',
       },
       {
         name: 'Resume',
