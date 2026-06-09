@@ -13,9 +13,10 @@ const Work = () => {
     const target = event.target as HTMLElement;
     const scrollTop = target.scrollTop;
     const scrollHeight = target.scrollHeight - target.clientHeight;
-    const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+    const progress = scrollHeight > 0 ? Math.min(Math.max(scrollTop / scrollHeight, 0), 1) : 0;
+    console.log('[WorkScroll] handleScroll:', { scrollTop, scrollHeight, progress });
     setScrollProgress(progress);
-  }
+  };
 
   // Hack: If the portal is active, add the scroll event listener to the scroll
   // wrapper div. If the portal is not active, remove the scroll event listener.
@@ -51,7 +52,14 @@ const Work = () => {
       });
 
       if (workScroll && mainScroll) {
+        console.log('[WorkScroll] setupScroll found both:', {
+          isActive,
+          workScrollTop: workScroll.scrollTop,
+          workScrollHeight: workScroll.scrollHeight,
+          workClientHeight: workScroll.clientHeight,
+        });
         if (isActive) {
+          workScroll.scrollTo({ top: 0 });
           setScrollProgress(0);
           workScroll.addEventListener('scroll', handleScroll);
           workScroll.style.zIndex = '1';
