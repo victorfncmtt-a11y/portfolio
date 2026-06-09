@@ -4,10 +4,10 @@
  */
 export const SITE_METADATA = {
   // Your website's absolute URL (used for SEO & canonical URLs)
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-qk8msd2yf-victormaitto.vercel.app/',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-victormaitto.vercel.app/',
 
   // The title that appears on browser tabs and in search engine results
-  title: "Victor Maitto ✌️ - Brand & Content Strategist",
+  title: "Victor Maitto - Designer",
 
   // A brief bio or description of what you do
   description: "Brand & Content Strategist and Brand Designer. Designing high-impact content engines, B2B SaaS positioning, and visual systems.",
@@ -22,7 +22,7 @@ export const SITE_METADATA = {
 
   // OpenGraph details (for social sharing on platforms like LinkedIn, Discord, etc.)
   openGraph: {
-    title: "Victor Maitto - Brand & Content Strategist",
+    title: "Victor Maitto - Designer",
     description: "Brand & Content Strategist and Brand Designer. Designing high-impact content engines and positioning systems.",
     siteName: "Victor Maitto's Portfolio",
     locale: "en_US",
@@ -31,7 +31,7 @@ export const SITE_METADATA = {
 
   // Twitter/X card details
   twitter: {
-    title: "Victor Maitto - Brand & Content Strategist",
+    title: "Victor Maitto - Designer",
     description: "Brand & Content Strategist and Brand Designer. Designing high-impact content engines and positioning systems.",
   },
 
