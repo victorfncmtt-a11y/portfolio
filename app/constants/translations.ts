@@ -259,7 +259,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         point: new THREE.Vector3(1, 1, -21),
         year: '2025 - Presente',
         title: 'Avenza',
-        subtitle: 'Especialista em Branding',
+        subtitle: 'Especialista de Branding',
         position: 'right',
       }
     ],
