@@ -116,28 +116,28 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
     ],
     projects: [
       {
-        title: 'Briefbox',
+        title: 'Napoli Centenary | study',
         date: '2026',
-        subtext: 'Complete B2B SaaS positioning, content direction, and 7-day multi-channel execution skeleton for an anti-prompting client-side Chrome extension.',
-        url: '/projects/briefbox',
+        subtext: 'Napoli Project',
+        url: 'https://www.behance.net/gallery/245899125/Napoli-Centenary-study',
       },
       {
-        title: 'Maestro Social Selling',
-        date: '2026',
-        subtext: 'Sleek positioning territory, local privacy procurement strategies, and WhatsApp-first B2B sales content engine for South Brazilian inside sales operations.',
-        url: '/projects/maestro',
+        title: 'SKAL | branding',
+        date: '2025',
+        subtext: 'Minimalist brand identity system, custom typography, and visual guidelines developed for SKAL.',
+        url: 'https://www.behance.net/gallery/245281035/SKAL-branding',
       },
       {
-        title: 'Avenza Branding & Identity',
-        date: '2025 - Present',
-        subtext: 'Branding systems, visual guidelines, and strategic communication designs developed in my current role as a Branding Specialist.',
-        url: 'https://behance.net/victor-maitto',
+        title: 'Ações Afirmativas Étnico-Raciais | PUCPR',
+        date: '2024',
+        subtext: 'PUCPR project',
+        url: 'https://www.behance.net/gallery/237958197/Acoes-Afirmativas-Etnico-Raciais-PUCPR',
       },
       {
-        title: 'This Portfolio',
-        date: 'Jun 2026',
-        subtext: 'A stunning 3D interactive portfolio built using Next.js, React Three Fiber (R3F), Drei, and GSAP.',
-        url: 'https://github.com/your-username/my-portfolio-site',
+        title: '25°S - surf & fashion',
+        date: '2024',
+        subtext: 'Branding strategy, visual language, and contemporary aesthetic alignment for a surf and fashion brand.',
+        url: 'https://www.behance.net/gallery/233423741/25S-surf-fashion',
       }
     ],
     footerLinks: [
@@ -151,7 +151,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         name: 'GitHub',
         hoverText: 'Open Sourcing',
         icon: '/icons/github.svg',
-        url: 'https://github.com/your-username',
+        url: 'https://github.com/victorfncmtt-a11y',
       },
       {
         name: 'Behance',
@@ -163,7 +163,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         name: 'Instagram',
         hoverText: 'Follow me',
         icon: '/icons/instagram.svg',
-        url: 'https://www.instagram.com/your-handle/',
+        url: '#',
       },
       {
         name: 'Resume',
@@ -265,28 +265,28 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
     ],
     projects: [
       {
-        title: 'Briefbox',
+        title: 'Napoli Centenary | study',
         date: '2026',
-        subtext: 'Posicionamento completo de B2B SaaS, direcionamento de conteúdo e cronograma de 7 dias de execução multicanal para extensão Chrome baseada em processamento local.',
-        url: '/projects/briefbox',
+        subtext: 'Napoli Project',
+        url: 'https://www.behance.net/gallery/245899125/Napoli-Centenary-study',
       },
       {
-        title: 'Maestro Social Selling',
-        date: '2026',
-        subtext: 'Posicionamento estratégico, atalho de segurança local para compras corporativas e motor de conteúdo focado em WhatsApp Web para vendas complexas.',
-        url: '/projects/maestro',
+        title: 'SKAL | branding',
+        date: '2025',
+        subtext: 'Sistema de identidade minimalista de marca, tipografia personalizada e diretrizes visuais desenvolvidas para a SKAL.',
+        url: 'https://www.behance.net/gallery/245281035/SKAL-branding',
       },
       {
-        title: 'Avenza Branding & Identity',
-        date: '2025 - Presente',
-        subtext: 'Sistemas de marca, guias visuais e design de comunicação estratégica desenvolvidos em minha atuação atual como Especialista em Branding.',
-        url: 'https://behance.net/victor-maitto',
+        title: 'Ações Afirmativas Étnico-Raciais | PUCPR',
+        date: '2024',
+        subtext: 'PUCPR project',
+        url: 'https://www.behance.net/gallery/237958197/Acoes-Afirmativas-Etnico-Raciais-PUCPR',
       },
       {
-        title: 'Este Portfólio',
-        date: 'Jun 2026',
-        subtext: 'Um portfólio interativo 3D impressionante construído usando Next.js, React Three Fiber (R3F), Drei e GSAP.',
-        url: 'https://github.com/your-username/my-portfolio-site',
+        title: '25°S - surf & fashion',
+        date: '2024',
+        subtext: 'Estratégia de branding, linguagem visual e alinhamento estético contemporâneo para uma marca de surf e moda.',
+        url: 'https://www.behance.net/gallery/233423741/25S-surf-fashion',
       }
     ],
     footerLinks: [
@@ -300,7 +300,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         name: 'GitHub',
         hoverText: 'Código aberto',
         icon: '/icons/github.svg',
-        url: 'https://github.com/your-username',
+        url: 'https://github.com/victorfncmtt-a11y',
       },
       {
         name: 'Behance',
@@ -312,7 +312,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         name: 'Instagram',
         hoverText: 'Siga-me',
         icon: '/icons/instagram.svg',
-        url: 'https://www.instagram.com/your-handle/',
+        url: '#',
       },
       {
         name: 'Resume',

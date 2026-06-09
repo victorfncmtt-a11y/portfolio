@@ -4,7 +4,7 @@
  */
 export const SITE_METADATA = {
   // Your website's absolute URL (used for SEO & canonical URLs)
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com/',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-qk8msd2yf-victormaitto.vercel.app/',
 
   // The title that appears on browser tabs and in search engine results
   title: "Victor Maitto ✌️ - Brand & Content Strategist",
@@ -13,7 +13,7 @@ export const SITE_METADATA = {
   description: "Brand & Content Strategist and Brand Designer. Designing high-impact content engines, B2B SaaS positioning, and visual systems.",
 
   // Keywords to help search engines index your site
-  keywords: "Victor Maitto, Brand Strategist, Content Strategist, Brand Designer, Creative Director, Marketing Agent, Briefbox, Maestro, Portfolio, Next.js, React, Three.js",
+  keywords: "Victor Maitto, Brand Strategist, Content Strategist, Brand Designer, Creative Director, Marketing Agent, Napoli Centenary study, SKAL branding, Ações Afirmativas PUCPR, 25S surf fashion, Behance, Portfolio, Next.js, React, Three.js",
 
   // Author & publisher settings
   authorName: "Victor Maitto",
@@ -37,7 +37,7 @@ export const SITE_METADATA = {
 
   // Google Site Verification code (for Google Search Console)
   // Set to empty string "" or null if you don't use it
-  googleVerificationCode: "GsRYY-ivL0F_VKkfs5KAeToliqz0gCrRAJKKmFkAxBA",
+  googleVerificationCode: "",
 
   // Google Analytics ID (can also be set via process.env.NEXT_PUBLIC_GA_ID)
   googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID || '',

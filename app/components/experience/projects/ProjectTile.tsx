@@ -92,6 +92,25 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick, da
     e.stopPropagation();
     if (!isMobile && isProjectSectionActive) {
       setDesktopHovered(true);
+      if (project.url) {
+        document.body.style.cursor = 'pointer';
+      }
+    }
+  };
+
+  const handlePointerOut = () => {
+    if (!isMobile && isProjectSectionActive) {
+      setDesktopHovered(false);
+      document.body.style.cursor = 'auto';
+    }
+  };
+
+  const handleTileClick = (e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation();
+    if (isMobile) {
+      onClick();
+    } else if (hovered && project.url) {
+      window.open(project.url, '_blank');
     }
   };
 
@@ -99,9 +118,9 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick, da
     <group
       position={position}
       rotation={rotation}
-      onClick={onClick}
+      onClick={handleTileClick}
       onPointerOver={handlePointerOver}
-      onPointerOut={() => !isMobile && isProjectSectionActive && setDesktopHovered(false)}>
+      onPointerOut={handlePointerOut}>
       <group ref={projectRef}>
         <mesh>
           <planeGeometry args={[4.2, 2, 1]} />

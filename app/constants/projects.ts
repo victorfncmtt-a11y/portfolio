@@ -6,27 +6,27 @@ import { Project } from "../types";
  */
 export const PROJECTS: Project[] = [
   {
-    title: 'Briefbox',
+    title: 'Napoli Centenary | study',
     date: '2026',
-    subtext: 'Complete B2B SaaS positioning, content direction, and 7-day multi-channel execution skeleton for an anti-prompting client-side Chrome extension.',
-    url: '/projects/briefbox',
+    subtext: 'Napoli Project',
+    url: 'https://www.behance.net/gallery/245899125/Napoli-Centenary-study',
   },
   {
-    title: 'Maestro Social Selling',
-    date: '2026',
-    subtext: 'Sleek positioning territory, local privacy procurement strategies, and WhatsApp-first B2B sales content engine for South Brazilian inside sales operations.',
-    url: '/projects/maestro',
+    title: 'SKAL | branding',
+    date: '2025',
+    subtext: 'Minimalist brand identity system, custom typography, and visual guidelines developed for SKAL.',
+    url: 'https://www.behance.net/gallery/245281035/SKAL-branding',
   },
   {
-    title: 'Avenza Branding & Identity',
-    date: '2025 - Present',
-    subtext: 'Branding systems, visual guidelines, and strategic communication designs developed in my current role as a Branding Specialist.',
-    url: 'https://behance.net/victor-maitto',
+    title: 'Ações Afirmativas Étnico-Raciais | PUCPR',
+    date: '2024',
+    subtext: 'PUCPR project',
+    url: 'https://www.behance.net/gallery/237958197/Acoes-Afirmativas-Etnico-Raciais-PUCPR',
   },
   {
-    title: 'This Portfolio',
-    date: 'Jun 2026',
-    subtext: 'A stunning 3D interactive portfolio built using Next.js, React Three Fiber (R3F), Drei, and GSAP.',
-    url: 'https://github.com/your-username/my-portfolio-site',
+    title: '25°S - surf & fashion',
+    date: '2024',
+    subtext: 'Branding strategy, visual language, and contemporary aesthetic alignment for a surf and fashion brand.',
+    url: 'https://www.behance.net/gallery/233423741/25S-surf-fashion',
   }
 ];

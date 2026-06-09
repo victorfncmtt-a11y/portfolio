@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLanguageStore } from '@stores';
 
@@ -406,7 +406,7 @@ export default function BriefboxCaseStudy() {
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">{territory.desc}</p>
                 <div className="bg-indigo-950/20 border border-indigo-500/10 rounded-lg p-4 text-xs">
                   <span className="block font-semibold text-indigo-400 uppercase tracking-wider mb-1 text-[10px]">{t.concept}</span>
-                  <p className="text-slate-300 italic">"{territory.concept}"</p>
+                  <p className="text-slate-300 italic">&quot;{territory.concept}&quot;</p>
                 </div>
                 <div className="mt-4 text-xs text-slate-400">
                   <span className="block font-semibold text-slate-300 uppercase tracking-wider mb-1 text-[10px]">{t.keyNarrative}</span>

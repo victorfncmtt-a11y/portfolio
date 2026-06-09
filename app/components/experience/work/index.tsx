@@ -22,34 +22,49 @@ const Work = () => {
   // ScrollControls doesn't work out of the box, so we have to manually handle
   // the scroll event.
   useEffect(() => {
-    // Find all scrollable divs in the document
-    const scrollContainers = Array.from(document.querySelectorAll('*')).filter(el => {
-      const style = window.getComputedStyle(el);
-      return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
-    }) as HTMLElement[];
+    let retryCount = 0;
+    let timeoutId: NodeJS.Timeout;
 
-    // Identify the scroll wrappers by scrollHeight (main scroll has pages=4, work scroll has pages=2)
-    const mainScroll = scrollContainers.find(div => div.scrollHeight > window.innerHeight * 3);
-    const workScroll = scrollContainers.find(div => div.scrollHeight <= window.innerHeight * 3);
+    const setupScroll = () => {
+      const scrollContainers = Array.from(document.querySelectorAll('*')).filter(el => {
+        const style = window.getComputedStyle(el);
+        return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
+      }) as HTMLElement[];
 
-    if (isActive) {
+      // Sort by scrollHeight descending to identify containers reliably without viewport height dependencies
+      const sorted = [...scrollContainers].sort((a, b) => b.scrollHeight - a.scrollHeight);
+      const mainScroll = sorted[0];
+      const workScroll = sorted[1];
+
       if (workScroll && mainScroll) {
-        setScrollProgress(0);
-        workScroll.addEventListener('scroll', handleScroll);
-        workScroll.style.zIndex = '1';
-        mainScroll.style.zIndex = '-1';
+        if (isActive) {
+          setScrollProgress(0);
+          workScroll.addEventListener('scroll', handleScroll);
+          workScroll.style.zIndex = '1';
+          mainScroll.style.zIndex = '-1';
+        } else {
+          workScroll.scrollTo({ top: 0, behavior: 'smooth' });
+          setScrollProgress(0);
+          workScroll.removeEventListener('scroll', handleScroll);
+          workScroll.style.zIndex = '-1';
+          mainScroll.style.zIndex = '1';
+        }
+      } else if (retryCount < 10) {
+        retryCount++;
+        timeoutId = setTimeout(setupScroll, 100);
       }
-    } else {
-      if (workScroll && mainScroll) {
-        workScroll.scrollTo({ top: 0, behavior: 'smooth' });
-        setScrollProgress(0);
-        workScroll.removeEventListener('scroll', handleScroll);
-        workScroll.style.zIndex = '-1';
-        mainScroll.style.zIndex = '1';
-      }
-    }
+    };
+
+    setupScroll();
 
     return () => {
+      clearTimeout(timeoutId);
+      const scrollContainers = Array.from(document.querySelectorAll('*')).filter(el => {
+        const style = window.getComputedStyle(el);
+        return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
+      }) as HTMLElement[];
+      const sorted = [...scrollContainers].sort((a, b) => b.scrollHeight - a.scrollHeight);
+      const workScroll = sorted[1];
       if (workScroll) {
         workScroll.removeEventListener('scroll', handleScroll);
       }
