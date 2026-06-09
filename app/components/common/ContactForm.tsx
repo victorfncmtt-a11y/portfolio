@@ -3,13 +3,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { useLanguageStore, usePortalStore } from '@stores';
+import { useLanguageStore, useContactStore } from '@stores';
 import { TRANSLATIONS } from '@constants';
 import { supabase } from '@/lib/supabaseClient';
-import { isMobile } from 'react-device-detect';
 
 const ContactForm = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isContactOpen, setContactOpen } = useContactStore();
+  const isOpen = isContactOpen;
+  const setIsOpen = setContactOpen;
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -18,23 +20,9 @@ const ContactForm = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const language = useLanguageStore((state) => state.language);
-  const isActive = usePortalStore((state) => !!state.activePortalId);
   const t = TRANSLATIONS[language].contact;
-
-  const positionClass = isMobile ? 'top-2 left-2' : 'top-6 left-6';
-
-  // Animate button visibility based on 3D portal activity
-  useGSAP(() => {
-    gsap.to(buttonRef.current, {
-      opacity: isActive ? 0 : 1,
-      pointerEvents: isActive ? 'none' : 'auto',
-      duration: 1,
-      delay: isActive ? 0 : 1,
-    });
-  }, [isActive]);
 
   // Animate modal entry/exit
   useGSAP(() => {
@@ -64,7 +52,7 @@ const ContactForm = () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('open-contact', handleOpenContact);
     };
-  }, []);
+  }, [setIsOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,19 +82,6 @@ const ContactForm = () => {
 
   return (
     <>
-      {/* Floating trigger button */}
-      <button
-        ref={buttonRef}
-        onClick={() => {
-          setIsOpen(true);
-          setStatus('idle');
-        }}
-        className={`fixed ${positionClass} z-40 font-sans text-xs tracking-widest text-white font-bold bg-neutral-950/40 border border-white/10 rounded-full px-4 py-2 hover:bg-neutral-900/70 hover:border-white/30 backdrop-blur-md transition-all duration-300 cursor-pointer shadow-lg`}
-        style={{ opacity: 0, pointerEvents: 'none' }}
-      >
-        {t.button}
-      </button>
-
       {/* Backdrop overlay */}
       <div
         ref={containerRef}

@@ -4,18 +4,19 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
-import { useLanguageStore } from "@stores";
+import { useLanguageStore, useContactStore } from "@stores";
 import { TRANSLATIONS } from "../../constants";
 import { FooterLink } from "../../types";
 
 const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const textRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
+  const setContactOpen = useContactStore((state) => state.setContactOpen);
   const onPointerOver = () => setHovered(true);
   const onPointerOut = () => setHovered(false);
   const onClick = () => {
-    if (link.name.toUpperCase() === 'CONTACT' || link.name.toUpperCase() === 'CONTATO') {
-      window.dispatchEvent(new CustomEvent('open-contact'));
+    if (link.name === 'Contact' || link.name === 'Contato') {
+      setContactOpen(true);
     } else {
       window.open(link.url, '_blank');
     }

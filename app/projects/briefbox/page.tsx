@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useLanguageStore } from '@stores';
 
+
 const TRANSLATIONS = {
   en: {
     back: '← BACK TO PORTFOLIO',

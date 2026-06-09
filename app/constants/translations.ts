@@ -41,7 +41,7 @@ export interface TranslationSet {
 export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
   en: {
     hero: {
-      greeting: "Hi! My name is Victor Maitto",
+      greeting: "Victor Maitto",
       primaryTitle: "BRAND & CONTENT STRATEGIST",
       secondaryTitle: "BRAND DESIGNER",
       rotatingSides: {
@@ -75,8 +75,8 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         point: new THREE.Vector3(-3, -1, -6),
         year: '2022 - 2023',
         title: 'Freelancer',
-        subtitle: 'Identity Design & Art Direction',
-        position: 'left',
+        subtitle: 'Identity & Content Design',
+        position: 'right',
       },
       {
         point: new THREE.Vector3(0, -2, -9),
@@ -97,7 +97,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         year: '2025 - 2026',
         title: 'Freelancer',
         subtitle: 'Brand & Content Strategy',
-        position: 'left',
+        position: 'right',
       },
       {
         point: new THREE.Vector3(-2, 2, -18),
@@ -116,27 +116,27 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
     ],
     projects: [
       {
-        title: 'Napoli',
+        title: 'Napoli Study',
         date: '2026',
-        subtext: 'Napoli Project',
+        subtext: 'A comprehensive brand case study celebrating the centenary of SSC Napoli, blending history with contemporary visual language.',
         url: 'https://www.behance.net/gallery/245899125/Napoli-Centenary-study',
       },
       {
-        title: 'SKAL | branding',
+        title: 'SKAL Branding',
         date: '2025',
-        subtext: 'Minimalist brand identity system, custom typography, and visual guidelines developed for SKAL.',
+        subtext: 'A sleek, modern brand design system developed for SKAL, aligning core values with premium visual identity.',
         url: 'https://www.behance.net/gallery/245281035/SKAL-branding',
       },
       {
-        title: 'PUCPR',
+        title: 'PUCPR Project',
         date: '2024',
-        subtext: 'PUCPR project',
+        subtext: 'A strategic visual communications campaign for PUCPR aimed at raising awareness and celebrating ethnic-racial affirmative actions.',
         url: 'https://www.behance.net/gallery/237958197/Acoes-Afirmativas-Etnico-Raciais-PUCPR',
       },
       {
-        title: '25°S - surf & fashion',
-        date: '2024',
-        subtext: 'Branding strategy, visual language, and contemporary aesthetic alignment for a surf and fashion brand.',
+        title: '25S Surf Fashion',
+        date: '2025',
+        subtext: 'A coastal fashion brand concept and visual identity created as my graduation thesis project (TCC), merging surf culture with sustainable aesthetics.',
         url: 'https://www.behance.net/gallery/233423741/25S-surf-fashion',
       }
     ],
@@ -154,16 +154,16 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         url: 'https://behance.net/victor-maitto',
       },
       {
-        name: 'Contact',
-        hoverText: 'Get in Touch',
-        icon: '/icons/mail.svg',
-        url: '#',
-      },
-      {
         name: 'Resume',
         hoverText: 'Download PDF',
         icon: '/icons/file.svg',
         url: './Resume.pdf',
+      },
+      {
+        name: 'Contact',
+        hoverText: 'Send me a message',
+        icon: '/icons/file.svg',
+        url: '#contact',
       }
     ],
     contact: {
@@ -184,7 +184,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
   },
   pt: {
     hero: {
-      greeting: "Olá! Meu nome é Victor Maitto",
+      greeting: "Victor Maitto",
       primaryTitle: "ESTRATEGISTA DE MARCA E CONTEÚDO",
       secondaryTitle: "DESIGNER DE MARCA",
       rotatingSides: {
@@ -218,8 +218,8 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         point: new THREE.Vector3(-3, -1, -6),
         year: '2022 - 2023',
         title: 'Freelancer',
-        subtitle: 'Design de Identidade e Direção de Arte',
-        position: 'left',
+        subtitle: 'Design de Identidade & Conteúdo',
+        position: 'right',
       },
       {
         point: new THREE.Vector3(0, -2, -9),
@@ -240,7 +240,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         year: '2025 - 2026',
         title: 'Freelancer',
         subtitle: 'Estratégia de Marca e Conteúdo',
-        position: 'left',
+        position: 'right',
       },
       {
         point: new THREE.Vector3(-2, 2, -18),
@@ -259,27 +259,27 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
     ],
     projects: [
       {
-        title: 'Napoli',
+        title: 'Estudo Napoli',
         date: '2026',
-        subtext: 'Napoli Project',
+        subtext: 'Um estudo de caso de marca abrangente celebrando o centenário do SSC Napoli, mesclando história com linguagem visual contemporânea.',
         url: 'https://www.behance.net/gallery/245899125/Napoli-Centenary-study',
       },
       {
-        title: 'SKAL | branding',
+        title: 'SKAL Branding',
         date: '2025',
-        subtext: 'Sistema de identidade minimalista de marca, tipografia personalizada e diretrizes visuais desenvolvidas para a SKAL.',
+        subtext: 'Um sistema de design de marca elegante e moderno desenvolvido para a SKAL, alinhando valores fundamentais com identidade visual premium.',
         url: 'https://www.behance.net/gallery/245281035/SKAL-branding',
       },
       {
-        title: 'PUCPR',
+        title: 'Projeto PUCPR',
         date: '2024',
-        subtext: 'PUCPR project',
+        subtext: 'Uma campanha estratégica de comunicação visual para a PUCPR destinada a conscientizar e celebrar as ações afirmativas étnico-raciais.',
         url: 'https://www.behance.net/gallery/237958197/Acoes-Afirmativas-Etnico-Raciais-PUCPR',
       },
       {
-        title: '25°S - surf & fashion',
-        date: '2024',
-        subtext: 'Estratégia de branding, linguagem visual e alinhamento estético contemporâneo para uma marca de surf e moda.',
+        title: '25S Surf Fashion',
+        date: '2025',
+        subtext: 'Conceito e identidade visual de uma marca de moda litorânea criada como meu Trabalho de Conclusão de Curso (TCC), unindo a cultura do surf com estética sustentável.',
         url: 'https://www.behance.net/gallery/233423741/25S-surf-fashion',
       }
     ],
@@ -297,16 +297,16 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         url: 'https://behance.net/victor-maitto',
       },
       {
-        name: 'Contato',
-        hoverText: 'Entre em contato',
-        icon: '/icons/mail.svg',
-        url: '#',
-      },
-      {
         name: 'Resume',
         hoverText: 'Baixar PDF',
         icon: '/icons/file.svg',
         url: './Resume.pdf',
+      },
+      {
+        name: 'Contato',
+        hoverText: 'Envie uma mensagem',
+        icon: '/icons/file.svg',
+        url: '#contato',
       }
     ],
     contact: {
