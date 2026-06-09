@@ -26,7 +26,16 @@ const Work = () => {
     let timeoutId: NodeJS.Timeout;
 
     const setupScroll = () => {
-      const scrollContainers = Array.from(document.querySelectorAll('*')).filter(el => {
+      const canvasParent = document.querySelector('.base-canvas')?.parentElement;
+      if (!canvasParent) {
+        if (retryCount < 10) {
+          retryCount++;
+          timeoutId = setTimeout(setupScroll, 100);
+        }
+        return;
+      }
+
+      const scrollContainers = Array.from(canvasParent.querySelectorAll('*')).filter(el => {
         const style = window.getComputedStyle(el);
         return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
       }) as HTMLElement[];
@@ -59,14 +68,17 @@ const Work = () => {
 
     return () => {
       clearTimeout(timeoutId);
-      const scrollContainers = Array.from(document.querySelectorAll('*')).filter(el => {
-        const style = window.getComputedStyle(el);
-        return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
-      }) as HTMLElement[];
-      const sorted = [...scrollContainers].sort((a, b) => b.scrollHeight - a.scrollHeight);
-      const workScroll = sorted[1];
-      if (workScroll) {
-        workScroll.removeEventListener('scroll', handleScroll);
+      const canvasParent = document.querySelector('.base-canvas')?.parentElement;
+      if (canvasParent) {
+        const scrollContainers = Array.from(canvasParent.querySelectorAll('*')).filter(el => {
+          const style = window.getComputedStyle(el);
+          return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll') && el.scrollHeight > el.clientHeight;
+        }) as HTMLElement[];
+        const sorted = [...scrollContainers].sort((a, b) => b.scrollHeight - a.scrollHeight);
+        const workScroll = sorted[1];
+        if (workScroll) {
+          workScroll.removeEventListener('scroll', handleScroll);
+        }
       }
     };
   }, [isActive]);

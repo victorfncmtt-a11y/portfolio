@@ -6,7 +6,7 @@ import { Project } from "../types";
  */
 export const PROJECTS: Project[] = [
   {
-    title: 'Napoli Centenary | study',
+    title: 'Napoli',
     date: '2026',
     subtext: 'Napoli Project',
     url: 'https://www.behance.net/gallery/245899125/Napoli-Centenary-study',
@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     url: 'https://www.behance.net/gallery/245281035/SKAL-branding',
   },
   {
-    title: 'Ações Afirmativas Étnico-Raciais | PUCPR',
+    title: 'PUCPR',
     date: '2024',
     subtext: 'PUCPR project',
     url: 'https://www.behance.net/gallery/237958197/Acoes-Afirmativas-Etnico-Raciais-PUCPR',
