@@ -1,13 +1,29 @@
-import { ScrollControls } from "@react-three/drei";
+import { ScrollControls, useScroll } from "@react-three/drei";
 import { usePortalStore, useScrollStore } from "@stores";
 import { useEffect } from "react";
 import * as THREE from "three";
 import { Memory } from "../../models/Memory";
 import Timeline from "./Timeline";
 
+const WorkScrollRegister = () => {
+  const scroll = useScroll();
+  const setWorkScrollEl = useScrollStore((state) => state.setWorkScrollEl);
+
+  useEffect(() => {
+    if (scroll?.el) {
+      setWorkScrollEl(scroll.el);
+    }
+    return () => {
+      setWorkScrollEl(null);
+    };
+  }, [scroll?.el, setWorkScrollEl]);
+
+  return null;
+};
+
 const Work = () => {
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
-  const { scrollProgress, setScrollProgress } = useScrollStore();
+  const { scrollProgress, setScrollProgress, mainScrollEl: mainScroll, workScrollEl: workScroll } = useScrollStore();
 
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;
@@ -21,36 +37,7 @@ const Work = () => {
   // If the portal is active, add the scroll event listener to the scroll
   // wrapper div. If the portal is not active, remove the scroll event listener.
   useEffect(() => {
-    if (!isActive) return;
-
-    let retryCount = 0;
-    let timeoutId: NodeJS.Timeout;
-
-    const setupScroll = () => {
-      const canvasParent = document.querySelector('.base-canvas')?.parentElement;
-      if (!canvasParent) {
-        if (retryCount < 10) {
-          retryCount++;
-          timeoutId = setTimeout(setupScroll, 100);
-        }
-        return;
-      }
-
-      const allElements = Array.from(canvasParent.querySelectorAll('*')) as HTMLElement[];
-      const scrollContainers = allElements.filter(el => {
-        const style = window.getComputedStyle(el);
-        return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll');
-      });
-
-      const mainScroll = scrollContainers.find(el => {
-        const spacer = el.firstElementChild as HTMLElement;
-        return spacer && spacer.style.height.startsWith('4');
-      });
-      const workScroll = scrollContainers.find(el => {
-        const spacer = el.firstElementChild as HTMLElement;
-        return spacer && spacer.style.height.startsWith('2');
-      });
-
+    if (isActive) {
       if (workScroll && mainScroll) {
         console.log('[WorkScroll] setupScroll found both:', {
           isActive,
@@ -63,43 +50,23 @@ const Work = () => {
         workScroll.addEventListener('scroll', handleScroll);
         workScroll.style.zIndex = '1';
         mainScroll.style.zIndex = '-1';
-      } else if (retryCount < 10) {
-        retryCount++;
-        timeoutId = setTimeout(setupScroll, 100);
       }
-    };
-
-    setupScroll();
+    } else {
+      if (workScroll && mainScroll) {
+        workScroll.scrollTo({ top: 0 });
+        setScrollProgress(0);
+        workScroll.removeEventListener('scroll', handleScroll);
+        workScroll.style.zIndex = '-1';
+        mainScroll.style.zIndex = '1';
+      }
+    }
 
     return () => {
-      clearTimeout(timeoutId);
-      const canvasParent = document.querySelector('.base-canvas')?.parentElement;
-      if (canvasParent) {
-        const allElements = Array.from(canvasParent.querySelectorAll('*')) as HTMLElement[];
-        const scrollContainers = allElements.filter(el => {
-          const style = window.getComputedStyle(el);
-          return (style.overflowY === 'auto' || style.overflowY === 'scroll' || style.overflow === 'auto' || style.overflow === 'scroll');
-        });
-
-        const mainScroll = scrollContainers.find(el => {
-          const spacer = el.firstElementChild as HTMLElement;
-          return spacer && spacer.style.height.startsWith('4');
-        });
-        const workScroll = scrollContainers.find(el => {
-          const spacer = el.firstElementChild as HTMLElement;
-          return spacer && spacer.style.height.startsWith('2');
-        });
-
-        if (workScroll) {
-          workScroll.removeEventListener('scroll', handleScroll);
-          workScroll.style.zIndex = '-1';
-        }
-        if (mainScroll) {
-          mainScroll.style.zIndex = '1';
-        }
+      if (workScroll) {
+        workScroll.removeEventListener('scroll', handleScroll);
       }
     };
-  }, [isActive]);
+  }, [isActive, workScroll, mainScroll]);
 
   if (!isActive) {
     return (
@@ -117,6 +84,7 @@ const Work = () => {
         <shadowMaterial opacity={0.1} />
       </mesh>
       <ScrollControls style={{ zIndex: 1 }} pages={2} maxSpeed={0.4}>
+        <WorkScrollRegister />
         <Memory scale={new THREE.Vector3(5, 5, 5)} position={new THREE.Vector3(0, -6, 1)}/>
         <Timeline progress={scrollProgress} />
       </ScrollControls>

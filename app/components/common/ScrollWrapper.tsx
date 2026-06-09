@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { isMobile } from "react-device-detect";
@@ -12,6 +13,13 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
   const data = useScroll();
   const isActive = usePortalStore((state) => !!state.activePortalId);
   const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
+  const setMainScrollEl = useScrollStore((state) => state.setMainScrollEl);
+
+  useEffect(() => {
+    if (data?.el) {
+      setMainScrollEl(data.el);
+    }
+  }, [data?.el, setMainScrollEl]);
 
   useFrame((state, delta) => {
     if (data) {
