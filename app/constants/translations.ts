@@ -148,22 +148,10 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         url: 'https://www.linkedin.com/in/victor-maitto',
       },
       {
-        name: 'GitHub',
-        hoverText: 'Open Sourcing',
-        icon: '/icons/github.svg',
-        url: 'https://github.com/victorfncmtt-a11y',
-      },
-      {
         name: 'Behance',
         hoverText: 'My portfolio projects',
         icon: '/icons/behance.svg', // Ensure behance.svg is available or you upload it
         url: 'https://behance.net/victor-maitto',
-      },
-      {
-        name: 'Instagram',
-        hoverText: 'Follow me',
-        icon: '/icons/instagram.svg',
-        url: '#',
       },
       {
         name: 'Resume',
@@ -297,22 +285,10 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
         url: 'https://www.linkedin.com/in/victor-maitto',
       },
       {
-        name: 'GitHub',
-        hoverText: 'Código aberto',
-        icon: '/icons/github.svg',
-        url: 'https://github.com/victorfncmtt-a11y',
-      },
-      {
         name: 'Behance',
         hoverText: 'Meus projetos no Behance',
         icon: '/icons/behance.svg',
         url: 'https://behance.net/victor-maitto',
-      },
-      {
-        name: 'Instagram',
-        hoverText: 'Siga-me',
-        icon: '/icons/instagram.svg',
-        url: '#',
       },
       {
         name: 'Resume',
