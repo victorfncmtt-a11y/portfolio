@@ -105,6 +105,18 @@ const Footer = () => {
   const language = useLanguageStore((state) => state.language);
   const footerLinks = TRANSLATIONS[language].footerLinks;
 
+  const activeLinks = isMobile
+    ? footerLinks.filter((link) => {
+        const nameLower = link.name.toLowerCase();
+        return (
+          nameLower === "linkedin" ||
+          nameLower === "behance" ||
+          nameLower === "contact" ||
+          nameLower === "contato"
+        );
+      })
+    : footerLinks;
+
   useFrame(() => {
     const d = data.range(0.8, 0.2);
     if (groupRef.current) {
@@ -113,7 +125,7 @@ const Footer = () => {
   });
 
   const getLinks = () => {
-    return footerLinks.map((link, i) => {
+    return activeLinks.map((link, i) => {
       return (
         <group key={i} position={[i * (isMobile ? 1.1 : 2), 0, 0]}>
           <FooterLinkItem link={link}/>
@@ -122,7 +134,7 @@ const Footer = () => {
     });
   };
 
-  const totalWidth = (footerLinks.length - 1) * (isMobile ? 1.1 : 2);
+  const totalWidth = (activeLinks.length - 1) * (isMobile ? 1.1 : 2);
   const startX = -totalWidth / 2;
 
   return (

@@ -162,7 +162,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
       {
         name: 'Contact',
         hoverText: 'Send me a message',
-        icon: '/icons/file.svg',
+        icon: '/icons/contact.svg',
         url: '#contact',
       }
     ],
@@ -305,7 +305,7 @@ export const TRANSLATIONS: Record<'en' | 'pt', TranslationSet> = {
       {
         name: 'Contato',
         hoverText: 'Envie uma mensagem',
-        icon: '/icons/file.svg',
+        icon: '/icons/contact.svg',
         url: '#contato',
       }
     ],
